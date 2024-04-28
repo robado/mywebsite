@@ -31,4 +31,15 @@ header {
 .tabcontent {
     padding: 20px;
     border-top: 1px solid #ccc;
+    text-align: center;
+}
+
+/* For contact list */
+.contact-list {
+    list-style-type: none; /* Remove the bullet points */
+    text-align: inline-block;
+}
+
+.contact-list li {
+    margin-bottom: 10px; /* Optional: Add some spacing between the list items */
 }

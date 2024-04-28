@@ -22,5 +22,11 @@
     </div>
 
     <script src="script.js"></script>
+    <script>
+        // Load home.html when loading index.html so the page wouldn't be empty
+        window.onload = function() {
+            openPage('home.html');
+        }
+    </script>
 </body>
 </html>
