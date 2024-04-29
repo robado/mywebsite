@@ -9,7 +9,9 @@
 </head>
 <body>
     <header>
-        <h1>Hey, Welcome to my site</h1>
+        <h1>Welcome</h1>
+        <h2>I'm Robert Ridal</h2>
+        <h2>A Senior Software Engineer</h2>
     </header>
 
     <button id="toggleDarkMode" class="dark-mode-button"><i class="fas fa-moon"></i></button>
@@ -24,27 +26,15 @@
         <!-- Tab content will be loaded here -->
     </div>
 
+    <h2><b>My stuff</b></h2>
+    <div class="stuff-links">
+        <a href="youtube.html">Youtube</a>
+        <a href="sudoku.html">Sudoku stuff</a>
+        <a href="coding.html">Coding stuff</a>
+        <a href="reading.html">Reading stuff</a>
+        <a href="random.html">Random stuff</a>
+    </div>
+
     <script src="script.js"></script>
-    <script>
-        const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
-        const storedTheme = localStorage.getItem("theme");
-
-        if (storedTheme == "dark" || (prefersDarkScheme.matches && !storedTheme)) {
-            document.body.classList.add("dark-mode");
-        }
-
-        const toggleDarkModeButton = document.getElementById("toggleDarkMode");
-        toggleDarkModeButton.addEventListener("click", function() {
-            document.body.classList.toggle("dark-mode");
-            const theme = document.body.classList.contains("dark-mode") ? "dark" : "light";
-            localStorage.setItem("theme", theme);
-        });
-    </script>
-    <script>
-        // Load home.html when loading index.html so the page wouldn't be empty
-        window.onload = function() {
-            openPage('home.html');
-        }
-    </script>
 </body>
 </html>

@@ -34,6 +34,27 @@ header {
     text-align: center;
 }
 
+/* Stuff links */
+.stuff-links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.stuff-links a {
+    text-decoration: none;
+    color: #333;
+    padding: 10px;
+    margin: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    transition: all 0.3 ease;
+}
+
+.stuff-links a:hover {
+    background-color: #f1f1f1;
+}
+
 /* For contact list */
 .contact-links {
     display: center;
@@ -70,4 +91,8 @@ header {
 
 .dark-mode .tab button.active {
     background-color: #555;
+}
+
+.dark-mode .stuff-links a {
+    color: #ff0000;
 }
