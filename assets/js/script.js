@@ -9,7 +9,7 @@ function openPage(pageName) {
 
 // Load home.html when loading index.html so the page wouldn't be empty
 window.onload = function() {
-    openPage('home.html');
+    openPage('/pages/home.html');
 }
 
 const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
