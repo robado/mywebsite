@@ -35,14 +35,14 @@ header {
 }
 
 /* For contact list */
-.contact-list {
-    list-style-type: none; /* Remove the bullet points */
-    text-align: inline-block;
+.contact-links {
+    display: center;
 }
 
-.contact-list li {
-    margin-bottom: 10px; /* Optional: Add some spacing between the list items */
+.contact-links a {
+    margin-right: 10px;
 }
+
 
 .dark-mode-button {
     position: fixed;
