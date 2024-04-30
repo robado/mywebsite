@@ -9,6 +9,13 @@ header {
     color: white;
     padding: 20px;
 }
+#resumeLink {
+    text-decoration: none;
+}
+#resumeLink:visited {
+    text-decoration: none;
+    color: inherit;
+}
 .tab {
     overflow: hidden;
     background-color: #f1f1f1;
