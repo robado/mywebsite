@@ -1,4 +1,4 @@
-console.log("anilist.js")
+// console.log("anilist.js")
 
 var query = `
 # query of user completed animes
@@ -81,7 +81,7 @@ function handleResponse(response) {
 }
 
 function handleData(data) {
-    console.log(data);
+    // console.log(data);
     var animeListContainer = document.getElementById('animeList');
     var mediaList = data.data.MediaListCollection.lists[0].entries; // First list contains all completed anime
 
