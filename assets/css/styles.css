@@ -103,14 +103,3 @@ header {
 .dark-mode .stuff-links a {
     color: #ff0000;
 }
-
-/* anilist */
-.anime-entry {
-    margin-bottom: 20px;
-}
-
-.anime-entry img {
-    width: 150px;
-    height: auto;
-    margin-right: 10px;
-}

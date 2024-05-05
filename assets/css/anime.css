@@ -1,0 +1,24 @@
+/* anilist */
+.anime-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.anime-entry {
+    border: 10px solid #ddd;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.anime-image img {
+    max-width: 200px;
+    max-height: 200px;
+    object-fit: contain;
+}
+
+.anime-title {
+    text-align: center;
+    margin-top: 10px;
+}

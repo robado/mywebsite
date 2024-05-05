@@ -90,20 +90,26 @@ function handleData(data) {
         var animeCover = entry.media.coverImage.large;
 
         // HTML elements for each anime
-        var animeDiv = document.createElement('div');
-        animeDiv.classList.add('anime-entry');
+        var animeEntryContainer = document.createElement('div');
+        animeEntryContainer.classList.add('anime-entry');
 
+        var animeImageContainer = document.createElement('div');
+        animeImageContainer.classList.add('anime-image');
         var animeImage = document.createElement('img');
         animeImage.src = animeCover;
         animeImage.alt = animeTitle;
+        animeImageContainer.appendChild(animeImage);
 
+        var animeTitleContainer = document.createElement('div');
+        animeTitleContainer.classList.add('anime-title');
         var animeTitleElement = document.createElement('p');
         animeTitleElement.textContent = animeTitle;
+        animeTitleContainer.appendChild(animeTitleElement);
 
-        animeDiv.appendChild(animeImage);
-        animeDiv.appendChild(animeTitleElement);
+        animeEntryContainer.appendChild(animeImageContainer);
+        animeEntryContainer.appendChild(animeTitleContainer);
 
-        animeListContainer.appendChild(animeDiv);
+        animeListContainer.appendChild(animeEntryContainer);
     });
 
     // Get the amount of anime
