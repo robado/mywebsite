@@ -3,6 +3,11 @@ function openPage(pageName) {
         .then(response => response.text())
         .then(data => {
             document.getElementById("tabContent").innerHTML = data;
+
+            if (pageName === '/pages/anime.html') {
+                // Load the anime list when the anime page is opened
+                loadAnimeList();
+            }
         })
         .catch(error => console.error('Error:', error));
 }
@@ -24,4 +29,25 @@ toggleDarkModeButton.addEventListener("click", function() {
     document.body.classList.toggle("dark-mode");
     const theme = document.body.classList.contains("dark-mode") ? "dark" : "light";
     localStorage.setItem("theme", theme);
+});
+
+// Dropdown menu functionality
+// Open/close dropdown
+const dropdownBtn = document.querySelector('.dropdown-btn');
+if (dropdownBtn) {
+    dropdownBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        const dropdownContent = this.parentElement.querySelector('.dropdown-content');
+        if (dropdownContent) {
+            dropdownContent.classList.toggle('show');
+        }
+    });
+}
+
+// Close when clicking outside
+document.addEventListener('click', function() {
+    const dropdownContent = document.querySelector('.dropdown-content');
+    if (dropdownContent) {
+        dropdownContent.classList.remove('show');
+    }
 });

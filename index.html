@@ -4,34 +4,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Robert Ridal</title>
+    <title>Robert Ridal - Senior Software Engineer </title>
     <link rel="stylesheet" href="/assets/css/styles.css" type="text/css">
+    <link rel="stylesheet" href="/assets/css/anime.css" type="text/css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
         integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body>
-    <header>
-        <h1>Welcome</h1>
-        <h2>I'm Robert Ridal</h2>
-        <h2>A Senior Software Engineer</h2>
-    </header>
-
-    <button id="toggleDarkMode" class="dark-mode-button"><i class="fas fa-moon"></i></button>
-
-    <div class="tab">
+    <div class="tab" aria-label="Navigation">
         <button class="tablinks" onclick="openPage('/pages/home.html')">Home</button>
         <button class="tablinks" onclick="openPage('/pages/about.html')">About</button>
-        <button class="tablinks" onclick="openPage('/pages/contact.html')">Contact</button>
+        <button class="tablinks" onclick="openPage('/pages/contact.html')">Contact</button> 
+        <div class="dropdown">
+            <button class="tablinks dropdown-btn">Other Stuff <i class="fas fa-chevron-down"></i></button>
+            <div class="dropdown-content">
+                <button class="dropdown-link" onclick="openPage('/pages/videos.html')">Videos</button>
+                <button class="dropdown-link" onclick="openPage('/pages/anime.html')">My Anilist</button>
+            </div>
+        </div>
         <button class="tablinks"> <a id="resumeLink" href="/assets/files/Robert_Ridal_CV.pdf" target="_blank">Resume</a></button>
     </div>
+
+    <button id="toggleDarkMode" class="dark-mode-button" aria-label="Toggle dark mode"><i class="fas fa-moon"></i></button>
 
     <div id="tabContent" class="tabcontent">
         <!-- Tab content will be loaded here -->
     </div>
 
     <script src="/assets/js/script.js"></script>
+    <script src="/assets/js/anilist.js"></script>
 </body>
 
 </html>

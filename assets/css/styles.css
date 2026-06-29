@@ -1,3 +1,4 @@
+/* == Main styles ? == */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -9,6 +10,7 @@ header {
     color: white;
     padding: 20px;
 }
+/* == Resume link == */
 #resumeLink {
     text-decoration: none;
 }
@@ -16,9 +18,9 @@ header {
     text-decoration: none;
     color: inherit;
 }
+/* == Tab styles == */
 .tab {
-    overflow: hidden;
-    background-color: #f1f1f1;
+    display: flex;
 }
 .tab button {
     background-color: inherit;
@@ -41,7 +43,38 @@ header {
     text-align: center;
 }
 
-/* Stuff links */
+/* Dropdown styles */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-btn {
+    background-color: inherit;
+    border: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+}
+
+/* Hidden by default */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #333;
+    min-width: 160px;
+    z-index: 999;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Show dropdown */
+.dropdown-content.show {
+    display: block;
+}
+
+/* == Stuff links == */
 .stuff-links {
     display: flex;
     flex-direction: column;
@@ -62,7 +95,7 @@ header {
     background-color: #f1f1f1;
 }
 
-/* For contact list */
+/* == For contact list == */
 .contact-links {
     display: center;
 }
@@ -71,14 +104,24 @@ header {
     margin-right: 10px;
 }
 
-
+/* == Dark Mode Button == */
 .dark-mode-button {
     position: fixed;
-    top: 20px;
-    right: 20px;
-    z-index: 999;
+    top: 8px; /* Adjusted top position to 8px to fit navbar */
+    right: 18px;
+    z-index: 20;
+    width: 30px;
+    height: 30px;
+    border: 1px solid var(--line);
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.8);
+    color: var(--text);
+    cursor: pointer;
+    box-shadow: var(--shadow);
+    backdrop-filter: blur(12px);
 }
 
+/* == Dark Mode Styles == */
 .dark-mode {
     background-color: #222;
     color: #fff;

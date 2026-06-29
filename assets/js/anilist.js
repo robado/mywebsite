@@ -1,5 +1,4 @@
 // console.log("anilist.js")
-
 var query = `
 # query of user completed animes
 query {
@@ -72,7 +71,20 @@ var url = 'https://graphql.anilist.co' ,
        })
     };
 
-fetch(url, options).then(handleResponse).then(handleData).catch(handleError);
+function loadAnimeList() {
+  var animeListContainer = document.getElementById('animeList');
+  var animeCountContainer = document.getElementById('animeCount');
+
+  if (!animeListContainer || !animeCountContainer) {
+    console.error('Anime list or count container not found');
+    return;
+  }
+
+  animeListContainer.innerHTML = ''; // Clear previous content
+  animeCountContainer.textContent = 'loading...'; // Clear previous count
+
+  fetch(url, options).then(handleResponse).then(handleData).catch(handleError);
+}
 
 function handleResponse(response) {
     return response.json().then(function (json) {
@@ -84,6 +96,11 @@ function handleData(data) {
     // console.log(data);
     var animeListContainer = document.getElementById('animeList');
     var mediaList = data.data.MediaListCollection.lists[0].entries; // First list contains all completed anime
+
+    if(!animeListContainer) {
+        console.error('Anime list container not found');
+        return;
+    }
 
     mediaList.forEach(function(entry) {
         var animeTitle = entry.media.title.userPreferred;
