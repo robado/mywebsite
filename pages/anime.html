@@ -1,9 +1,44 @@
-<section class="page-page">
-    <h1>Anime</h1>
+<section class="anime-page page-section">
+    <div class="anime-header">
+        <h1>Anime</h1>
+        <p>Search and browse completed anime from Anilist.</p>
+    </div>
 
+    <!--
     <p>I will have somekind of a list of my watched animes and maybe reviews.</p>
     <p>I will have to see what I will come up with.</p>
     <p>But in the mean time here is my current list of anime of amount of <span id="animeCount"></span></p>
+    -->
+
+    <div class="anime-controls">
+        <input id="animeUsername" class="anime-input" type="text" placeholder="Anilist username" value="robaato">
+
+        <button id="loadAnimeBtn" class="anime-button">Load Anime List
+        </button>
+
+        <input id="animeSearch" class="anime-input" type="text" placeholder="Search anime...">
+
+        <select id="animeSort" class="anime-select">
+            <option value="title-asc">Sort by Title (A-Z)</option>
+            <option value="title-desc">Sort by Title (Z-A)</option>
+            <option value="score-desc">Sort high-low</option>
+            <option value="score-asc">Sort low-high</option>
+            <option value="year-desc">Year newest</option>
+            <option value="year-asc">Year oldest</option>
+        </select>
+
+        <select id="animeFormat" class="anime-select">
+            <option value="">All Formats</option>
+            <option value="TV">TV</option>
+            <option value="Movie">Movie</option>
+            <option value="OVA">OVA</option>
+            <option value="ONA">ONA</option>
+            <option value="Special">Special</option>
+            <option value="Music">Music</option>
+        </select>
+    </div>
+
+    <p class="anime-count-text">Showing: <span id="animeCount">0</span> anime</p>
 
     <div id="animeList" class="anime-grid"></div>
 </section>

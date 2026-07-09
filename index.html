@@ -13,28 +13,28 @@
 </head>
 
 <body>
-    <div class="tab" aria-label="Navigation">
+    <nav class="tab" aria-label="Navigation">
         <button class="tablinks" onclick="openPage('/pages/home.html')">Home</button>
         <button class="tablinks" onclick="openPage('/pages/about.html')">About</button>
         <button class="tablinks" onclick="openPage('/pages/contact.html')">Contact</button> 
         <div class="dropdown">
-            <button class="tablinks dropdown-btn">Other Stuff <i class="fas fa-chevron-down"></i></button>
+            <button class="tablinks dropdown-btn" type="button">Other Stuff <i class="fas fa-caret-down"></i></button>
             <div class="dropdown-content">
-                <button class="dropdown-link" onclick="openPage('/pages/videos.html')">Videos</button>
-                <button class="dropdown-link" onclick="openPage('/pages/anime.html')">My Anilist</button>
+                <a href="/pages/anime.html" data-page="/pages/anime.html">Anime</a>
+                <a href="/pages/videos.html" data-page="/pages/videos.html">Videos</a>
             </div>
         </div>
         <button class="tablinks"> <a id="resumeLink" href="/assets/files/Robert_Ridal_CV.pdf" target="_blank">Resume</a></button>
-    </div>
 
-    <button id="toggleDarkMode" class="dark-mode-button" aria-label="Toggle dark mode"><i class="fas fa-moon"></i></button>
+        <button id="toggleDarkMode" class="dark-mode-toggle" aria-label="Toggle dark mode"><i class="fas fa-moon"></i></button>
+    </nav>
 
     <div id="tabContent" class="tabcontent">
         <!-- Tab content will be loaded here -->
     </div>
 
-    <script src="/assets/js/script.js"></script>
     <script src="/assets/js/anilist.js"></script>
+    <script src="/assets/js/script.js"></script>
 </body>
 
 </html>

@@ -1,60 +1,165 @@
-/* == Main styles ? == */
+/* ===== Reset & Base ===== */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
 body {
-    font-family: Arial, sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
     margin: 0;
     padding: 0;
     text-align: center;
+    color: #1a1a2e;
+    background-color: #fafafa;
+    line-height: 1.6;
 }
-header {
-    background-color: #333;
-    color: white;
-    padding: 20px;
+
+/* ===== Hero Section ===== */
+.hero {
+    min-height: 85vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+    color: #ffffff;
+    padding: 60px 24px;
 }
-/* == Resume link == */
-#resumeLink {
+
+.hero-content {
+    max-width: 720px;
+}
+
+.hero-greeting {
+    font-size: 1.1rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #a78bfa;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.hero h1 {
+    font-size: 3.5rem;
+    font-weight: 800;
+    margin: 0 0 16px 0;
+    letter-spacing: -1px;
+    line-height: 1.1;
+}
+
+.hero-tagline {
+    font-size: 1.35rem;
+    color: #c4b5fd;
+    margin: 0 0 20px 0;
+    font-weight: 400;
+}
+
+.hero-description {
+    font-size: 1.1rem;
+    color: #d1d5db;
+    margin: 0 0 36px 0;
+    max-width: 580px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.hero-actions {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* ===== Buttons ===== */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 28px;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
     text-decoration: none;
+    cursor: pointer;
+    border: none;
+    transition: all 0.25s ease;
 }
-#resumeLink:visited {
-    text-decoration: none;
-    color: inherit;
+
+.btn-primary {
+    background-color: #a78bfa;
+    color: #0f0c29;
 }
-/* == Tab styles == */
+
+.btn-primary:hover {
+    background-color: #8b5cf6;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 14px rgba(139, 92, 246, 0.4);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: #ffffff;
+    border: 2px solid #a78bfa;
+}
+
+.btn-secondary:hover {
+    background-color: rgba(167, 139, 250, 0.1);
+    transform: translateY(-2px);
+}
+
+/* ===== Navigation Tab ===== */
 .tab {
     display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+    background-color: #ffffff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+
+    overflow: visible;
 }
+
 .tab button {
     background-color: inherit;
-    float: left;
+    /* float: left; */
     border: none;
     outline: none;
     cursor: pointer;
-    padding: 14px 16px;
+    padding: 16px 24px;
     transition: 0.3s;
-}
-.tab button:hover {
-    background-color: #ddd;
-}
-.tab button.active {
-    background-color: #ccc;
-}
-.tabcontent {
-    padding: 20px;
-    border-top: 1px solid #ccc;
-    text-align: center;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: #4b5563;
 }
 
-/* Dropdown styles */
+.tab button:hover {
+    background-color: #f3f4f6;
+    color: #7c3aed;
+}
+
+.tab button.active {
+    background-color: #faf5ff;
+    color: #7c3aed;
+    border-bottom: 3px solid #a78bfa;
+}
+
+#resumeLinkNav a,
+#resumeLink a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* ===== Dropdown Menu ===== */
 .dropdown {
     position: relative;
     display: inline-block;
 }
 
 .dropdown-btn {
-    background-color: inherit;
-    border: none;
-    cursor: pointer;
     padding: 14px 16px;
-    transition: 0.3s;
+    cursor: pointer;
 }
 
 /* Hidden by default */
@@ -65,13 +170,43 @@ header {
     left: 0;
     background-color: #333;
     min-width: 160px;
-    z-index: 999;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 9999;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Dropdown links */
+.dropdown-content a {
+    display: block;
+    color: white;
+    padding: 12px 16px;
+    text-decoration: none;
+    text-align: left;
+    white-space: nowrap;
+}
+
+.dropdown-content a:hover {
+    background-color: #555;
 }
 
 /* Show dropdown */
 .dropdown-content.show {
     display: block;
+}
+
+/* ===== Tab Content ===== */
+.tabcontent {
+    padding: 0;
+    border-top: 1px solid #e5e7eb;
+    text-align: center;
+    max-width: none;
+    margin: 0 auto;
+}
+
+/* ===== Page Section Content ===== */
+.page-section {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 40px 24px;
 }
 
 /* == Stuff links == */
@@ -83,66 +218,130 @@ header {
 
 .stuff-links a {
     text-decoration: none;
-    color: #333;
-    padding: 10px;
-    margin: 5px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    transition: all 0.3 ease;
+    color: #1a1a2e;
+    padding: 14px 28px;
+    margin: 6px;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    transition: all 0.25s ease;
+    font-weight: 500;
+    background-color: #ffffff;
 }
 
 .stuff-links a:hover {
-    background-color: #f1f1f1;
+    background-color: #faf5ff;
+    border-color: #a78bfa;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(139, 92, 246, 0.1);
 }
 
-/* == For contact list == */
+/* ===== Contact Links ===== */
 .contact-links {
-    display: center;
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
 }
 
 .contact-links a {
-    margin-right: 10px;
+    text-decoration: none;
+    color: #7c3aed;
+    font-weight: 500;
+    padding: 8px 16px;
+    border-radius: 6px;
+    transition: all 0.25s ease;
 }
 
-/* == Dark Mode Button == */
-.dark-mode-button {
-    position: fixed;
-    top: 8px; /* Adjusted top position to 8px to fit navbar */
-    right: 18px;
-    z-index: 20;
-    width: 30px;
-    height: 30px;
-    border: 1px solid var(--line);
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.8);
-    color: var(--text);
+.contact-links a:hover {
+    background-color: #faf5ff;
+    color: #5b21b6;
+}
+
+/* ===== Dark Mode Toggle (in nav) ===== */
+.dark-mode-toggle {
+    margin-left: auto;
+    background: none;
+    border: none;
+    font-size: 1.1rem;
     cursor: pointer;
-    box-shadow: var(--shadow);
-    backdrop-filter: blur(12px);
+    color: #4b5563;
+    padding: 16px 24px;
+    transition: 0.3s;
+}
+
+.dark-mode-toggle:hover {
+    background-color: #f3f4f6;
+    color: #7c3aed;
 }
 
 /* == Dark Mode Styles == */
 .dark-mode {
-    background-color: #222;
-    color: #fff;
+    background-color: #0f0c29;
+    color: #e5e7eb;
 }
 
-.dark-mode header {
-    background-color: #333;
+.dark-mode header,
+.dark-mode .hero {
+    background: linear-gradient(135deg, #1a1145 0%, #2d2666 50%, #1a1145 100%);
 }
 
-.dark-mode button {
-    background-color: #444;
+.dark-mode button:not(.dark-mode-button) {
+    background-color: #1e1b4b;
+    color: #e5e7eb;
 }
 
 .dark-mode .tab {
-    background-color: #555;
+    background-color: #1e1b4b;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.dark-mode .tab button:hover {
+    background-color: #2d2666;
+    color: #a78bfa;
 }
 
 .dark-mode .tab button.active {
-    background-color: #555;
+    background-color: #1e1b4b;
+    color: #a78bfa;
+    border-bottom-color: #a78bfa;
+}
+
+.dark-mode .tabcontent {
+    border-top-color: #2d2666;
 }
 
 .dark-mode .stuff-links a {
-    color: #ff0000;
+    background-color: #1e1b4b;
+    color: #c4b5fd;
+    border-color: #2d2666;
+}
+
+.dark-mode .stuff-links a:hover {
+    background-color: #2d2666;
+    border-color: #a78bfa;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 640px) {
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero-tagline {
+        font-size: 1.1rem;
+    }
+
+    .hero-description {
+        font-size: 1rem;
+    }
+
+    .hero-actions {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .tab button {
+        padding: 14px 12px;
+        font-size: 0.85rem;
+    }
 }
