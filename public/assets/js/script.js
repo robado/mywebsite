@@ -17,7 +17,7 @@ function openPage(pageName) {
 
 // Load home.html when loading index.html so the page wouldn't be empty
 window.onload = function() {
-    openPage('/pages/home.html');
+    openPage('/public/pages/home.html');
 }
 
 const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
@@ -79,4 +79,44 @@ document.addEventListener('click', function() {
     if (dropdownContent) {
         dropdownContent.classList.remove('show');
     }
+});
+
+// Sign in button modal functions
+const signInButton = document.getElementById("signInButton");
+let modal = document.getElementById("signInModal");
+
+function attachModalHandlers(m) {
+  const closeBtn = m.querySelector('.close');
+  if (closeBtn) closeBtn.addEventListener('click', () => { m.style.display = 'none'; });
+
+  // Close when clicking outside the modal
+  window.addEventListener('click', (event) => {
+    if (event.target === m) {
+      m.style.display = 'none';
+    }
+  });
+}
+
+signInButton.addEventListener('click', () => {
+  if (!modal) {
+    // Load modal HTML on demand and append to body
+    fetch('/public/pages/signInModal.html')
+      .then(response => response.text())
+      .then(html => {
+        const wrapper = document.createElement('div');
+        wrapper.innerHTML = html.trim();
+        const el = wrapper.firstElementChild;
+        if (el) {
+          document.body.appendChild(el);
+          modal = document.getElementById('signInModal');
+          if (modal) {
+            modal.style.display = 'block';
+            attachModalHandlers(modal);
+          }
+        }
+      })
+      .catch(error => console.error('Error loading sign-in modal:', error));
+  } else {
+    modal.style.display = 'block';
+  }
 });
