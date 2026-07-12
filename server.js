@@ -62,30 +62,6 @@ app.get("/me", authenticateToken, (req, res) => {
         success: true,
         user: req.user
     });
-    /*const authHeader = req.headers.authorization;
-
-    if(!authHeader) {
-        return res.status(401).json({
-            success: false,
-            message: "Not authenticated"
-        });
-    }
-
-    const token = authHeader.split(" ")[1];
-
-    try {
-        const decoded = jwt.verify(token, "secret_key");
-        console.log(decoded);
-        res.json({
-            success: true,
-            user: decoded
-        });
-    } catch (error) {
-        res.status(401).json({
-            success: false,
-            message: "Invalid token"
-        });
-    }*/
 });
 
 app.listen(3000, () => {

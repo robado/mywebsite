@@ -91,13 +91,11 @@ async function updateAuthButtonState() {
   const token = localStorage.getItem("token");
   
   if (!token) {
-    // No token, show sign in
     signInButton.style.display = 'inline-flex';
     logoutButton.style.display = 'none';
     return;
   }
 
-  // Token exists, verify with server
   try {
     const response = await fetch("/me", {
       headers: {
@@ -106,24 +104,15 @@ async function updateAuthButtonState() {
     });
 
     if (response.ok) {
-      // Server says user is authenticated
-      // signInButton.style.display = 'none';
-      // logoutButton.style.display = 'inline-flex';
       showLoggedIn();
     } else if (response.status === 401) {
-      // Server says token is invalid, remove it
       localStorage.removeItem("token");
       showLoggedOut(); 
-      // signInButton.style.display = 'inline-flex';
-      // logoutButton.style.display = 'none';
       console.log("Token invalid, cleared");
     }
   } catch (error) {
     console.error("Error verifying authentication:", error);
-    // On network error, default to sign in
     showLoggedOut();
-    // signInButton.style.display = 'inline-flex';
-    // logoutButton.style.display = 'none';
   }
 }
 
@@ -137,7 +126,6 @@ function showLoggedOut() {
     logoutButton.style.display = "none";
 }
 
-// Call on page load
 updateAuthButtonState();
 
 function attachModalHandlers(m) {
@@ -217,7 +205,7 @@ if (modal) {
   initializeSignInForm(modal);
 }
 
-// Logout functionality
+// Logout
 logoutButton.addEventListener('click', () => {
   localStorage.removeItem("token");
   updateAuthButtonState();
