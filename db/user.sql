@@ -4,3 +4,5 @@ CREATE TABLE users (
     password_hash TEXT NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+INSERT INTO users (username, password_hash) VALUES ('', '');

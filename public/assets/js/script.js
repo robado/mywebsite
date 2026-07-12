@@ -17,7 +17,7 @@ function openPage(pageName) {
 
 // Load home.html when loading index.html so the page wouldn't be empty
 window.onload = function() {
-    openPage('/public/pages/home.html');
+    openPage('/pages/home.html');
 }
 
 const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
@@ -81,9 +81,64 @@ document.addEventListener('click', function() {
     }
 });
 
-// Sign in button modal functions
+// Sign in/logout button management
 const signInButton = document.getElementById("signInButton");
+const logoutButton = document.getElementById("logoutButton");
 let modal = document.getElementById("signInModal");
+
+// Initialize button visibility based on server's authentication state
+async function updateAuthButtonState() {
+  const token = localStorage.getItem("token");
+  
+  if (!token) {
+    // No token, show sign in
+    signInButton.style.display = 'inline-flex';
+    logoutButton.style.display = 'none';
+    return;
+  }
+
+  // Token exists, verify with server
+  try {
+    const response = await fetch("/me", {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    });
+
+    if (response.ok) {
+      // Server says user is authenticated
+      // signInButton.style.display = 'none';
+      // logoutButton.style.display = 'inline-flex';
+      showLoggedIn();
+    } else if (response.status === 401) {
+      // Server says token is invalid, remove it
+      localStorage.removeItem("token");
+      showLoggedOut(); 
+      // signInButton.style.display = 'inline-flex';
+      // logoutButton.style.display = 'none';
+      console.log("Token invalid, cleared");
+    }
+  } catch (error) {
+    console.error("Error verifying authentication:", error);
+    // On network error, default to sign in
+    showLoggedOut();
+    // signInButton.style.display = 'inline-flex';
+    // logoutButton.style.display = 'none';
+  }
+}
+
+function showLoggedIn() {
+    signInButton.style.display = "none";
+    logoutButton.style.display = "inline-flex";
+}
+
+function showLoggedOut() {
+    signInButton.style.display = "inline-flex";
+    logoutButton.style.display = "none";
+}
+
+// Call on page load
+updateAuthButtonState();
 
 function attachModalHandlers(m) {
   const closeBtn = m.querySelector('.close');
@@ -97,10 +152,46 @@ function attachModalHandlers(m) {
   });
 }
 
+function initializeSignInForm(m) {
+  const form = m.querySelector('#signInForm');
+  if (!form) return;
+
+    form.addEventListener('submit', async (event) => {
+        event.preventDefault();
+
+        const username = form.querySelector('#username').value;
+        const password = form.querySelector('#password').value;
+
+        try {
+            const response = await fetch("/login", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    username,
+                    password
+                })
+            });
+
+            const result = await response.json();
+
+            if (result.success) {
+                localStorage.setItem("token", result.token);
+                updateAuthButtonState();
+                m.style.display = 'none';
+                await getCurrentUser();
+            }
+
+        } catch (error) {
+            console.error(error);
+        }
+    });
+}
+
 signInButton.addEventListener('click', () => {
   if (!modal) {
-    // Load modal HTML on demand and append to body
-    fetch('/public/pages/signInModal.html')
+    fetch('/pages/signInModal.html')
       .then(response => response.text())
       .then(html => {
         const wrapper = document.createElement('div');
@@ -110,8 +201,9 @@ signInButton.addEventListener('click', () => {
           document.body.appendChild(el);
           modal = document.getElementById('signInModal');
           if (modal) {
-            modal.style.display = 'block';
+            initializeSignInForm(modal);
             attachModalHandlers(modal);
+            modal.style.display = 'block';
           }
         }
       })
@@ -120,3 +212,35 @@ signInButton.addEventListener('click', () => {
     modal.style.display = 'block';
   }
 });
+
+if (modal) {
+  initializeSignInForm(modal);
+}
+
+// Logout functionality
+logoutButton.addEventListener('click', () => {
+  localStorage.removeItem("token");
+  updateAuthButtonState();
+  console.log("Logged out successfully");
+});
+
+async function getCurrentUser() {
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+        console.log("Not logged in");
+        return;
+    }
+
+    try {
+        const response = await fetch("/me", {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        });
+
+        const result = await response.json();
+    } catch (error) {
+        console.error(error);
+    }
+}
