@@ -1,4 +1,78 @@
-/* anilist */
+/* anime page */
+.anime-page { max-width: 1400px; }
+.anime-header { margin-bottom: 28px; }
+.anime-header h1 { margin-bottom: 8px; font-size: 2.5rem; }
+.anime-header p,
+.anime-count-text { color: var(--muted); }
+
+.anime-controls { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; margin-bottom: 20px; }
+.anime-input,
+.anime-select,
+.anime-button {
+    padding: 10px 12px;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    background: var(--surface);
+    color: var(--text);
+    font: inherit;
+}
+.anime-input { min-width: 200px; }
+.anime-button { cursor: pointer; }
+.anime-button:hover { border-color: var(--text); background: #222; }
+.anime-input:focus,
+.anime-select:focus { outline: 1px solid var(--text); }
+
+.anime-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(1080px, 1fr)); gap: 20px }
+.anime-card { display: flex; flex-direction: column; overflow: hidden; background: var(--surface); color: var(--text); border: 1px solid var(--border); text-decoration:  none; }
+/* check this */
+.anime-card:hover { border-color: var(--text); }
+.anime-image-wrapper { aspect-ratio: 2 / 3; background: #222; }
+.anime-image-wrapper a { display: block; height: 100%; }
+.anime-cover { display: block; width: 100%; height: 100%; object-fit: cover; }
+.anime-card-body { padding: 14px; text-align: left; }
+.anime-title { min-height: 44px; margin: 0 0 10px; font-size: 1rem; }
+.anime-meta { display: flex; justify-content: space-between; color: var(--muted); font-size: .85rem; }
+.anime-error { grid-column: 1 / -1; color: #ff9b9b; }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Anime page uses the same small set of theme variables from styles.css. 
+
+.anime-input { min-width: 200px; }
+.anime-button { cursor: pointer; }
+.anime-button:hover { border-color: var(--text); background: #222; }
+.anime-input:focus,
+.anime-select:focus { outline: 1px solid var(--text); }
+
+.anime-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 20px; }
+.anime-card { display: flex; flex-direction: column; overflow: hidden; background: var(--surface); color: var(--text); border: 1px solid var(--border); text-decoration: none; }
+.anime-card:hover { border-color: var(--text); }
+.anime-image-wrapper { aspect-ratio: 2 / 3; background: #222; }
+.anime-image-wrapper a { display: block; height: 100%; }
+.anime-cover { display: block; width: 100%; height: 100%; object-fit: cover; }
+.anime-card-body { padding: 14px; text-align: left; }
+.anime-title { min-height: 44px; margin: 0 0 10px; font-size: 1rem; }
+.anime-meta { display: flex; justify-content: space-between; color: var(--muted); font-size: .85rem; }
+.anime-error { grid-column: 1 / -1; color: #ff9b9b; }
+*/
+
+/* anilist 
 .anime-page {
     max-width: 1400px;
     margin: 0 auto;
@@ -141,3 +215,4 @@
     color: #fca5a5;
     font-weight: 600;
 }
+*/

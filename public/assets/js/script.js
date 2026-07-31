@@ -20,20 +20,6 @@ window.onload = function() {
     openPage('/pages/home.html');
 }
 
-const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
-const storedTheme = localStorage.getItem("theme");
-
-if (storedTheme == "dark" || (prefersDarkScheme.matches && !storedTheme)) {
-    document.body.classList.add("dark-mode");
-}
-
-const toggleDarkModeButton = document.getElementById("toggleDarkMode");
-toggleDarkModeButton.addEventListener("click", function() {
-    document.body.classList.toggle("dark-mode");
-    const theme = document.body.classList.contains("dark-mode") ? "dark" : "light";
-    localStorage.setItem("theme", theme);
-});
-
 // Dropdown menu functionality
 // Open/close dropdown
 const dropdownBtn = document.querySelector('.dropdown-btn');

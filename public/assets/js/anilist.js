@@ -2,13 +2,14 @@
 let allAnime = [];
 
 function loadAnimeList(username = "robaato") {
-  console.log("Loading anime list for:", username);
+  // console.log("Loading anime list for:", username);
 
   const query = `
   # query of user completed animes
   query ($userName: String) {
     MediaListCollection(userName: $userName, type:ANIME, status:COMPLETED) {
       lists {
+        name
         entries {
           score(format: POINT_10_DECIMAL)
           media {
@@ -58,9 +59,22 @@ function loadAnimeList(username = "robaato") {
         throw new Error("No anime list found. Check the username.");
       }
       // console.log("Anime list data:", data);
+      const standardAnilistLists = ["Watching", "Completed", "Paused", "Dropped", "Planning", "Rewatching"];
+
       allAnime = data.data.MediaListCollection.lists
+      // Only keep the standard list - Not custom lists for now
+      .filter(list => standardAnilistLists.includes(list.name))
       .flatMap(list => list.entries)
       .filter(entry => entry.media);
+
+      // If some extra weird dupes are left - dedupe
+      const seen = new Map();
+      for (const entry of allAnime) {
+        if (!seen.has(entry.media.id)) {
+          seen.set(entry.media.id, entry);
+        }
+      }
+      allAnime = Array.from(seen.values());
 
       renderAnimeList();
 
@@ -161,12 +175,14 @@ function renderAnimeList() {
     return `
       <div class="anime-card">
         <div class="anime-image-wrapper">
-          <img 
-            src=${image}
-            alt=${title}
-            class="anime-cover"
-            loading="lazy"
-          ></img>
+          <a href="${url}" target="_blank" rel="noopener noreferrer" aria-label="View ${title} on AniList">
+            <img 
+              src=${image}
+              alt=${title}
+              class="anime-cover"
+              loading="lazy"
+            >
+          </a>
         </div>
 
         <div class="anime-card-body">
